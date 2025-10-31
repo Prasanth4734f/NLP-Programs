@@ -1,0 +1,15 @@
+from transformers import MarianMTModel, MarianTokenizer
+
+model_name = "Helsinki-NLP/opus-mt-en-fr"
+tokenizer = MarianTokenizer.from_pretrained(model_name)
+model = MarianMTModel.from_pretrained(model_name)
+
+src_text = "Hello, how are you?"
+translated = model.generate(**tokenizer(src_text, return_tensors="pt", padding=True))
+output = [tokenizer.decode(t, skip_special_tokens=True) for t in translated]
+print(output[0])
+
+--------------------------------------------OUTPUT----------------------
+
+Bonjour, comment allez-vous ?
+
