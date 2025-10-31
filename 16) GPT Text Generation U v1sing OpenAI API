@@ -1,0 +1,15 @@
+import openai
+
+client = openai.OpenAI(api_key="YOUR_OPENAI_API_KEY")  # Replace with your key
+
+response = client.chat.completions.create(
+    model="gpt-3.5-turbo",  # Or "gpt-4" if you have access
+    messages=[
+        {"role": "system", "content": "You are a helpful assistant."},
+        {"role": "user", "content": "Write a short story about a robot learning languages."}
+    ]
+)
+print(response.choices[0].message.content)
+
+----------------------------------OUTPUT---------------------------
+Once upon a time, in a bustling tech city, there lived a small robot named Lex. Lex was curious about the world and wanted to speak with everyone it met. Day by day, Lex downloaded language data and practiced with humans, learning to say greetings in English, French, and Hindi. With time and practice, Lex could talk with people from many lands, making new friends everywhere it went. Lex learned that languages could open doors to wonderful adventures and friendships, and promised to keep learning forever.
